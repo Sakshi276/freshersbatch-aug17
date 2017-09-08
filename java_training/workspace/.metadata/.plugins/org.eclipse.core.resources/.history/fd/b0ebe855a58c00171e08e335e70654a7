@@ -1,0 +1,12 @@
+package com.spring.SpringRestMongoDemo.dao;
+
+import com.spring.SpringRestMongoDemo.entity.Session;
+import com.spring.SpringRestMongoDemo.entity.User;
+
+public interface UserDao {
+	
+	public User createUser(User user);
+	
+	public Session createSession(Session session);
+
+}

@@ -1,0 +1,22 @@
+package com.practice.stream;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+import com.practice.stream.TestData;
+
+public class TestStream {
+
+	public static void main(String[] args) {
+		
+		List<Fruit> fruits=TestData.getAllFruits();
+		List<String> lowCalorieFruits = fruits.stream()
+				.filter(fruit -> (fruit.getCalories())<100)
+				.sorted(Comparator.comparing(Fruit::getCalories))
+				.map(Fruit::getName)
+				.collect (Collectors.toList()); 
+
+		System.out.println(lowCalorieFruits);
+	}
+
+}

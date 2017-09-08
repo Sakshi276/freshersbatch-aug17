@@ -1,0 +1,28 @@
+package com.spring.TestOneToOne;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ADDRESS")
+public class Address {
+	
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
+	@Column(name="addrId")
+	private Long addrId;
+	
+	@Column(name="street")
+	private String street;
+	
+	@Column(name="state")
+	private String state;
+	
+	@Column(name="country")
+	private String country;
+
+}

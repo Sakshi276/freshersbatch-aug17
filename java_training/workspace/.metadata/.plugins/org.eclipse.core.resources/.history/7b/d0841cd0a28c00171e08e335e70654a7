@@ -1,0 +1,9 @@
+package com.spring.SpringRestMongoDemo.service;
+
+import com.spring.SpringRestMongoDemo.entity.User;
+
+public interface UserInterface {
+	
+	public User createUser(User user);
+
+}

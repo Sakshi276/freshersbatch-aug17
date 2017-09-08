@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+
+  <style>
+  
+  .container
+  {
+	width: 300px;
+	border: 1px solid cyan;
+  }
+  
+  .container-fluid
+  {
+	background-color: cyan;
+  }
+  
+  </style>
+  
+  
+  </head>
+
+
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <img src="pictures/abc.jpg" class="img-circle" alt="abc" width="100" height="100" align=left>
+    <h3>India's Coolest Marketplace</h3>
+    <ul class="nav navbar-nav navbar-right">
+	
+	  <li><a routerLink="/home" routerLinkActive="active" ><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li><a routerLink="/register" routerLinkActive="active" ><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+	  <li (click)="goBack()"><a href=""><span class="glyphicon glyphicon-arrow-left"></span> Back</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+
+
+<div class="container">
+
+<form #productForm="ngForm"  novalidate>
+  
+  <div class="form-group">
+    <label for="uname">Username:</label>
+    <input type="text" class="form-control" name="uname" required #nameRef #nameModelRef="ngModel" ngModel>
+    <div *ngIf="nameModelRef.errors && nameModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!nameModelRef.errors.required" >Please enter your username </div>
+     </div>
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" name="password" id="pwd" required #passwordRef #passwordModelRef="ngModel" ngModel>
+    <div *ngIf="passwordModelRef.errors && passwordModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!passwordModelRef.errors.required" >Please enter your password </div>
+    </div>
+  </div>
+  <div class="form-group" style="text-align: center">
+  <button [disabled]="!productForm.form.valid" (click)="checkLogin(nameRef.value,passwordRef.value)"  type="submit" data-dismiss="modal" class="btn">Login</button>
+  </div>
+</form>
+
+</div>
+
+
+</body>
+</html>
+

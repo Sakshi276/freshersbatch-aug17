@@ -1,0 +1,10 @@
+package com.spring.TestAround;
+
+import org.aspectj.lang.annotation.Aspect;
+
+@Aspect 
+public class AroundAspectBean {
+	
+	
+
+}

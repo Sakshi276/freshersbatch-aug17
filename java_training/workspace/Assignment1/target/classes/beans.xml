@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+<bean id="item" class="com.spring.Assignment1.Item">
+	<property name="itemName" value="iPhone 6s" />
+	<property name="itemPrice" value="45000d" />
+</bean>
+
+<bean id="order" class="com.spring.Assignment1.Order">
+	<property name="orderId" value="10" />
+	<property name="item" ref="item" />
+</bean>
+
+<bean id="item2" class="com.spring.Assignment1.Item">
+	<property name="itemName" value="iPhone 6s" />
+	<property name="itemPrice" value="43000d" />
+</bean>
+
+<bean id="order2" class="com.spring.Assignment1.Order">
+	<property name="orderId" value="10" />
+	<property name="item" ref="item2" />
+</bean>
+
+
+
+</beans>

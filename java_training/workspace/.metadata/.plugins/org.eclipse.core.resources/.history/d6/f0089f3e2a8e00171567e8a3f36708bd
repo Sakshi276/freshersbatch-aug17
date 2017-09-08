@@ -1,0 +1,118 @@
+package com.spring.TestOneToOne;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class App 
+{
+	static long mId;
+	
+    public static void main( String[] args )
+    {
+    	Configuration configuration=new Configuration();
+        configuration.configure("hibernate.cfg.xml");
+        SessionFactory sessionFactory=configuration.buildSessionFactory();
+        
+        //insertCust(sessionFactory);
+        insertMarket(sessionFactory);
+        readMarket(sessionFactory);
+        updateMarket(sessionFactory);
+        readMarket(sessionFactory);
+        deleteMarket(sessionFactory);
+        readMarket(sessionFactory);
+        
+        
+        
+        
+        sessionFactory.close();
+    }
+    
+    public static void insertCust(SessionFactory sessionFactory) {
+    	
+    	Session session=sessionFactory.openSession();
+    	Transaction transaction=session.beginTransaction();
+    	
+    	Address addr1=new Address("Aundh","Pune","MS");
+        Customer cust1=new Customer("Sak",addr1);
+        
+        session.persist(cust1);
+    	
+    	transaction.commit();
+		session.close();
+	}
+    
+    public static void insertMarket(SessionFactory sessionFacory) {
+    	
+    	Session session=sessionFacory.openSession();
+    	Transaction transaction=session.beginTransaction();
+    	
+    	Market market1=new Market();
+    	
+    	Stock stock1=new Stock("aaa",market1);
+    	Stock stock2=new Stock("bbb",market1);
+    	Stock stock3=new Stock("ccc",market1);
+    	
+    	Set<Stock> stocks=new HashSet<Stock>();
+    	stocks.add(stock1);
+    	stocks.add(stock2);
+    	stocks.add(stock3);
+    	
+    	market1.setMarketName("market1");
+    	market1.setStocks(stocks);
+    	session.persist(market1);
+    	
+    	transaction.commit();
+    	session.close();
+		
+	}
+    
+    public static void readMarket(SessionFactory sessionFactory)
+    {
+    	Session session=sessionFactory.openSession();
+    	Transaction transaction=session.beginTransaction();
+    	
+    	Query query=session.createQuery("from Market");
+    	List<Market> markets=query.list();
+    	System.out.println(markets);
+    	for(Market market : markets)
+    	{
+    		mId=market.getMarketId();
+    	}
+    	transaction.commit();
+    	session.close();
+    }
+    
+    public static void updateMarket(SessionFactory sessionFactory) {
+    	
+    	Session session=sessionFactory.openSession();
+    	Transaction transaction=session.beginTransaction();
+    	
+    	Market market=session.load(Market.class, mId);
+    	market.setMarketName("new market");
+    	
+    	transaction.commit();
+    	session.close();
+		
+	}
+    
+    public static void deleteMarket(SessionFactory sessionFactory) {
+    	
+    	Session session=sessionFactory.openSession();
+    	Transaction transaction=session.beginTransaction();
+    	
+    	Market market=session.load(Market.class, mId);
+    	session.delete(market);
+    	
+    	transaction.commit();
+    	session.close();
+    	
+		
+	}
+}

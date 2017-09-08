@@ -1,0 +1,44 @@
+package com.spring.TestInheritence;
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CAR")
+@PrimaryKeyJoinColumn(name="ID")
+public class Car extends Vehicle {
+	
+	@Column
+	private double capacity;
+
+	public Car() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Car(String name, double mileage,double capacity) {
+		super(name, mileage);
+		this.capacity=capacity;
+	}
+
+	public double getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(double capacity) {
+		this.capacity = capacity;
+	}
+
+	@Override
+	public String toString() {
+		return "Car [capacity=" + capacity + "]";
+	}
+
+	
+	
+	
+
+}

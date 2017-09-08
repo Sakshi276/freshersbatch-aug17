@@ -1,0 +1,29 @@
+package com.spring.TestAround;
+
+import java.util.*;
+
+public class TestTime {
+	
+	public void addInVector() 
+	{
+		Vector<Integer> v=new Vector<Integer>();
+		int i=1;
+		while(i<=1000)
+		{
+			i++;
+			v.add(i);
+		}
+	}
+	
+	public void addInList() 
+	{
+		List<Integer> list=new ArrayList<Integer>();
+		int i=1;
+		while(i<=1000)
+		{
+			i++;
+			list.add(i);
+		}
+	}
+
+}

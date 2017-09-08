@@ -1,0 +1,18 @@
+package com.spring.SpringRestMongoDemo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.spring.SpringRestMongoDemo.dao.UserDao;
+import com.spring.SpringRestMongoDemo.entity.User;
+
+public class UserServiceImpl {
+	
+	@Autowired
+	UserDao userDao;
+	
+	public User createUser(User user)
+	{
+		return userDao.createUser(user);
+	}
+
+}

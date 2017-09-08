@@ -1,0 +1,37 @@
+package com.spring.SpringRestMongoDemo.entity;
+
+import java.sql.Date;
+
+public class Session {
+	
+	private String userName;
+	private Date lastUpdatedDate;
+	public Session() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Session(String userName, Date lastUpdatedDate) {
+		super();
+		this.userName = userName;
+		this.lastUpdatedDate = lastUpdatedDate;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public Date getLastUpdatedDate() {
+		return lastUpdatedDate;
+	}
+	public void setLastUpdatedDate(Date lastUpdatedDate) {
+		this.lastUpdatedDate = lastUpdatedDate;
+	}
+	@Override
+	public String toString() {
+		return "Session [userName=" + userName + ", lastUpdatedDate=" + lastUpdatedDate + "]";
+	}
+	
+	
+
+}

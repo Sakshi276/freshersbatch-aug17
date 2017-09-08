@@ -1,0 +1,9 @@
+package com.spring.SpringRestMongoDemo.repository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.spring.SpringRestMongoDemo.collections.UserCollection;
+
+public interface UserRepository extends MongoRepository<UserCollection, String> {
+
+}

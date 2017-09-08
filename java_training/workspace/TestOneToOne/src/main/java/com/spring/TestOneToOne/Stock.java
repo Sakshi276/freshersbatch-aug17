@@ -1,0 +1,78 @@
+package com.spring.TestOneToOne;
+
+
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="STOCKS")
+public class Stock{
+	
+	@Id
+	@GeneratedValue
+	@Column(name="stockId")
+	private Long stockId;
+	
+	@Column(name="stockName")
+	private String stockName;
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="marketId")
+	private Market market;
+
+	public Stock() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Stock(String stockName) {
+		super();
+		this.stockName = stockName;
+	}
+
+	public Stock(String stockName, Market market) {
+		super();
+		this.stockName = stockName;
+		this.market = market;
+	}
+
+	public Long getStockId() {
+		return stockId;
+	}
+
+	public void setStockId(Long stockId) {
+		this.stockId = stockId;
+	}
+
+	public String getStockName() {
+		return stockName;
+	}
+
+	public void setStockName(String stockName) {
+		this.stockName = stockName;
+	}
+
+	public Market getMarket() {
+		return market;
+	}
+
+	public void setMarket(Market market) {
+		this.market = market;
+	}
+
+	@Override
+	public String toString() {
+		return "Stock [stockId=" + stockId + ", stockName=" + stockName + "]";
+	}
+	
+	
+
+}

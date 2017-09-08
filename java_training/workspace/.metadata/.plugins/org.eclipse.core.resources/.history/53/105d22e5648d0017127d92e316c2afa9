@@ -1,0 +1,91 @@
+package com.spring.HibernateDemo;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        Configuration configuration=new Configuration();
+        configuration.configure("hibernate.cfg.xml");
+        SessionFactory sessionFactory=configuration.buildSessionFactory();
+        insert(sessionFactory);
+        //update(sessionFactory);
+        //select(sessionFactory);
+        //delete(sessionFactory);
+        testSetAndLoad(sessionFactory);
+        
+        sessionFactory.close();
+    }
+    
+    public static void insert(SessionFactory sessionFactory) {
+    	
+		Session session=sessionFactory.openSession();
+		Transaction transaction=session.beginTransaction();
+		
+		Product product=new Product("Laptop",50000);
+		session.save(product);
+		
+		transaction.commit();
+		session.close();
+		System.out.println("In insert method");
+	}
+    
+    public static void update(SessionFactory sessionFactory) {
+    	
+    	Session session=sessionFactory.openSession();
+		Transaction transaction=session.beginTransaction();
+		
+		Product product=session.load(Product.class, 1L);
+		product.setPrice(80000);
+		
+		transaction.commit();
+		session.close();
+		System.out.println("In update method");
+		
+	}
+    
+    public static void select(SessionFactory sessionFactory)
+    {
+    	Session session=sessionFactory.openSession();
+    	
+    	Query query=session.createQuery("from Product");
+    	List<Product> products=query.list();
+    	System.out.println(products);
+    	System.out.println("in select method");
+    	
+    	session.close();
+		
+    }
+    
+    public static void delete(SessionFactory sessionFactory) {
+    	
+    	Session session=sessionFactory.openSession();
+		Transaction transaction=session.beginTransaction();
+		
+		Query query=session.createQuery("delete from Product");
+		query.executeUpdate();
+		
+		transaction.commit();
+		session.close();
+		System.out.println("In delete method");
+		
+		
+	}
+    
+    public static void testSetAndLoad(SessionFactory sessionFactory) {
+    	
+    	Session session=sessionFactory.openSession();
+    	Product product=session.load(Product.class, 2L);
+    	
+    	session.close();
+		System.out.println("Testing set and load");
+	}
+}

@@ -1,0 +1,9 @@
+package com.spring.StringOperationsAOP;
+
+public class Sneeze {
+	
+	public void sneeze(String arg0, String arg1, int i) throws Exception {
+	    throw new Exception("Simulate an error");
+	  }
+
+}

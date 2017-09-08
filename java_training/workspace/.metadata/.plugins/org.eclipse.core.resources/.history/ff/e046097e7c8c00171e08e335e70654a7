@@ -1,0 +1,5 @@
+package com.spring.SpringRestMongoDemo.service;
+
+public interface UserService {
+
+}

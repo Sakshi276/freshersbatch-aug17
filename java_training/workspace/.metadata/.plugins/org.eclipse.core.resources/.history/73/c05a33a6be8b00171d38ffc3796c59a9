@@ -1,0 +1,27 @@
+package com.spring.StringOperationsAOP;
+
+public class StringOperations {
+	
+	private String testString;
+
+	public StringOperations(String testString) {
+		super();
+		this.testString = testString;
+	}
+	
+	public String getCapStr(String testString)
+	{
+		return testString.toUpperCase();
+	}
+	
+	public String getLowerStr(String testString)
+	{
+		return testString.toLowerCase();
+	}
+	
+	public int getLength(String testString) 
+	{
+		return testString.length();
+	}
+
+}

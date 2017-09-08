@@ -1,0 +1,9 @@
+package com.spring.SpringRestMongoDemo.dao;
+
+import com.spring.SpringRestMongoDemo.entity.Session;
+
+public interface SessionDao {
+	
+	public Session createSession(Session session);
+
+}

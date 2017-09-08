@@ -1,0 +1,32 @@
+package com.spring.TestOneToOne;
+
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table(name="MARKETS")
+public class Market {
+	
+	@Id
+	@GeneratedValue
+	@Column(name="marketId")
+	private Long marketId;
+	
+	@Column(name="marketName")
+	private String marketName;
+	
+	@OneToMany(cascade={CascadeType.PERSIST, CascadeType.REMOVE}, 
+			fetch=FetchType.EAGER, mappedBy = "")
+	private Set<Stock> stocks;
+
+}

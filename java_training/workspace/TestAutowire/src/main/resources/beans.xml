@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+<context:annotation-config />
+
+<bean id="emp1" class="com.spring.TestAutowire.EmployeeBean" autowire="">
+	<property name="empId" value="10"/>
+	<property name="empName" value="Sak"/>
+</bean>
+
+<bean id="department" class="com.spring.TestAutowire.DepartmentBean">
+	<property name="deptId" value="1"/>
+	<property name="deptName" value="HR"/>
+</bean>
+
+</beans>

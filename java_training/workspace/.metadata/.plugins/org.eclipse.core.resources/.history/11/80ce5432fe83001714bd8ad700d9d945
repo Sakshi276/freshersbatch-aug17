@@ -1,0 +1,89 @@
+package com.practice.stream;
+
+import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
+
+import com.practice.stream.TestData;
+
+public class TestStream {
+
+	public static void main(String[] args) {
+		
+		List<Fruit> fruits=TestData.getAllFruits();
+		/* List<String> lowCalorieFruits = fruits.stream()
+				.filter(fruit -> (fruit.getCalories())<100)
+				.sorted(Comparator.comparing(Fruit::getCalories).reversed())
+				.map(Fruit::getName)
+				.collect (Collectors.toList()); 
+
+		System.out.println(lowCalorieFruits); */
+		
+		/* Map<String,List<Fruit>> colorWiseFruits= fruits.stream()
+				.collect(groupingBy(Fruit::getColor));
+		
+		System.out.println(colorWiseFruits); */
+		
+		/* List<String> redColorFruits = fruits.stream()
+				.filter(fruit -> fruit.getColor()=="Red")
+				.sorted(Comparator.comparing(Fruit::getPrice))
+				.map(Fruit::getName)
+				.collect(Collectors.toList());
+		
+		System.out.println(redColorFruits); */
+		
+		List<News> news=TestData.getAllNews();
+		
+		/* Map<Integer,Long> idWiseCount= news.stream()
+				
+				.collect(groupingBy(News::getNewsId,Collectors.counting()));
+		System.out.println(idWiseCount);
+		
+		Map<String,Long> commentByUser
+		=news.stream()
+		.collect(groupingBy(News::getCommentByUser,counting()));
+		System.out.println(commentByUser); */
+		
+		List<Transaction> transactions=TestData.getAllTransactions();
+		
+		/* List<Transaction> transactionInYear=transactions.stream()
+				.filter(transaction -> transaction.getYear()==2011)
+				.sorted(Comparator.comparing(Transaction::getValue))
+				.collect(Collectors.toList());
+		
+		System.out.println(transactionInYear); */
+		
+		/* List<String> uniqueCities=transactions.stream()
+				.map(Transaction::getTrader)
+				.map(Trader::getCity)
+				.distinct()
+				.collect(Collectors.toList());
+		
+		System.out.println(uniqueCities); */
+		
+		/* List<Trader> traderFromPune=transactions.stream()
+				.filter(t -> t.getTrader().getCity()=="Pune")
+				.map(Transaction::getTrader)
+				
+				.sorted(Comparator.comparing(Trader::getName))
+				.collect(Collectors.toList());
+		
+		System.out.println(traderFromPune); */
+		
+		Optional<Transaction> opTransaction = transactions.stream() 
+				.filter(t -> t.getTrader().getCity()=="Indore") 
+				.findAny(); 
+		System.out.println(opTransaction);
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

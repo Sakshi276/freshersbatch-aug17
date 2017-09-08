@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Registration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+
+  <style>
+  
+  .container
+  {
+	width: 500px;
+	border: 1px solid cyan;
+  }
+  
+  .container-fluid
+  {
+	background-color: cyan;
+  }
+  
+  </style>
+  
+  
+  </head>
+
+
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <img src="pictures/abc.jpg" class="img-circle" alt="abc" width="100" height="100" align=left>
+    <h3>India's Coolest Marketplace</h3>
+    <ul class="nav navbar-nav navbar-right">
+	
+	  <li><a routerLink="/home" routerLinkActive="active" ><span class="glyphicon glyphicon-home"></span> Home</a></li>
+    <li><a routerLink="/login" routerLinkActive="active" ><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	  <li (click)="goBack()"><a href=""><span class="glyphicon glyphicon-arrow-left"></span> Back</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container">
+
+<form  #productForm="ngForm" novalidate >
+
+	<div class="form-group">
+    <label for="fname">Enter your first name:</label>
+    <input type="text" class="form-control" name="fname" required #fnameModelRef="ngModel" ngModel >
+    <div [hidden]="fnameModelRef.valid || fnameModelRef.pristine" class="alert alert-danger">Please enter the first name</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="lname">Enter your last name:</label>
+    <input type="text" class="form-control" name="lname" required #lnameModelRef="ngModel" ngModel >
+    <div [hidden]="lnameModelRef.valid || lnameModelRef.pristine" class="alert alert-danger">Please enter the last name</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="mob">Enter your mobile no:</label>
+    <input type="number" class="form-control" name="mob" required #mobModelRef="ngModel" ngModel>
+    <div [hidden]="mobModelRef.valid || mobModelRef.pristine" class="alert alert-danger">Please enter the mobile number</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="email">Enter your email id:</label>
+    <input type="email" class="form-control" name="email" required #emailModelRef="ngModel" ngModel>
+    <div [hidden]="emailModelRef.valid || emailModelRef.pristine" class="alert alert-danger">Please enter the email id</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="uname">Username:</label>
+    <input type="text" class="form-control" name="uname" required #unameModelRef="ngModel" ngModel >
+    <div [hidden]="unameModelRef.valid || unameModelRef.pristine" class="alert alert-danger">Please enter the username</div>
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" name="pwd" required #pwdModelRef="ngModel" ngModel>
+    <div [hidden]="pwdModelRef.valid || pwdModelRef.pristine" class="alert alert-danger">Please enter the password</div>
+  </div>
+
+  <div class="form-group">
+    <label for="pwd">Confirm Password:</label>
+    <input type="password" class="form-control" name="cpwd" required #cpwdModelRef="ngModel" ngModel>
+    <div [hidden]="cpwdModelRef.valid || cpwdModelRef.pristine" class="alert alert-danger">Please enter confirm password</div>
+  </div>
+  
+  
+  
+  
+  <div class="form-group" >
+  
+  <button type="reset" class="btn btn-default" style="margin-left: 4cm;">Reset</button>
+  <button [disabled]="!productForm.form.valid" 
+  (click)="insertSignupInfo(fnameModelRef.value,lnameModelRef.value,unameModelRef.value,pwdModelRef.value,cpwdModelRef.value,
+                        emailModelRef.value,mobModelRef.value)" 
+  type="submit" class="btn btn-default">
+     Register
+  </button>
+
+  </div>
+</form>
+
+</div>
+
+
+</body>
+</html>
+

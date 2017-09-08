@@ -1,0 +1,9 @@
+grant codeBade "file:D:\java_training\assignment5\TestAccess.java"
+{
+	permission java.reflect.ReflectPermission "stopThread";
+};
+
+grant 
+{
+	permission java.security.AllPermission;
+};

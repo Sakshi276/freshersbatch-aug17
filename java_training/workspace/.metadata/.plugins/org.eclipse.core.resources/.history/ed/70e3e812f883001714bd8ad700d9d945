@@ -1,0 +1,57 @@
+package com.practice.stream;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
+
+import com.practice.stream.TestData;
+
+public class TestStream {
+
+	public static void main(String[] args) {
+		
+		List<Fruit> fruits=TestData.getAllFruits();
+		/* List<String> lowCalorieFruits = fruits.stream()
+				.filter(fruit -> (fruit.getCalories())<100)
+				.sorted(Comparator.comparing(Fruit::getCalories).reversed())
+				.map(Fruit::getName)
+				.collect (Collectors.toList()); 
+
+		System.out.println(lowCalorieFruits); */
+		
+		/* Map<String,List<Fruit>> colorWiseFruits= fruits.stream()
+				.collect(groupingBy(Fruit::getColor));
+		
+		System.out.println(colorWiseFruits); */
+		
+		/* List<String> redColorFruits = fruits.stream()
+				.filter(fruit -> fruit.getColor()=="Red")
+				.sorted(Comparator.comparing(Fruit::getPrice))
+				.map(Fruit::getName)
+				.collect(Collectors.toList());
+		
+		System.out.println(redColorFruits); */
+		
+		List<News> news=TestData.getAllNews();
+		
+		Map<Integer,Long> idWiseCount= news.stream()
+				
+				.collect(groupingBy(News::getNewsId,Collectors.counting()));
+		System.out.println(idWiseCount);
+		
+		Map<String,Long> commentByUser
+		=news.stream()
+		.collect(groupingBy(News::getCommentByUser,counting()));
+		System.out.println(commentByUser);
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

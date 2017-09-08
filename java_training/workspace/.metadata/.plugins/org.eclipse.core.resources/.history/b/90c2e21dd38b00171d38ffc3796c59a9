@@ -1,0 +1,33 @@
+package com.spring.AuditTrailing;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+
+@Aspect 
+public class UserAspect {
+	
+	@Pointcut("execution(* UserHandler.register(..))")     
+	
+	public void register_pointcut(){}
+	
+	 @Before("register_pointcut()")      
+	 
+	 public void checkUserName(JoinPoint jp)      
+	 {        
+		Object args[] = jp.getArgs(); 
+		System.out.println(args[0]);
+	 	if(args[0].toString().length()<3)
+	 	{
+	 		System.out.println("username must be minimum 3 characters");
+	 	}
+	 	else
+	 	{
+	 		System.out.println("registered successfully!");
+	 	}
+	 	
+	 		
+	 }  
+
+}

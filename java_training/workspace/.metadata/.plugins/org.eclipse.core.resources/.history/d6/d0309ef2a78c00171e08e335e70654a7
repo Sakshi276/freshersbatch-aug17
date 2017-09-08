@@ -1,0 +1,11 @@
+package com.spring.SpringRestMongoDemo.service;
+
+import com.spring.SpringRestMongoDemo.collections.UserSession;
+import com.spring.SpringRestMongoDemo.entity.Session;
+import com.spring.SpringRestMongoDemo.entity.User;
+
+public interface UserInterface {
+	
+	public User createUser(User user);
+	public String loginUser(Session session);
+}

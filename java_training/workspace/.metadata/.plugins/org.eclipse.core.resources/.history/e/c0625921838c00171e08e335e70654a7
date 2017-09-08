@@ -1,0 +1,5 @@
+package com.spring.SpringRestMongoDemo.collections;
+
+public class UserCollection {
+
+}

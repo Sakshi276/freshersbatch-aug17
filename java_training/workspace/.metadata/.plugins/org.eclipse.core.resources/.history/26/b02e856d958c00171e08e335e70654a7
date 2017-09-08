@@ -1,0 +1,5 @@
+package com.spring.SpringRestMongoDemo.entity;
+
+public class Session {
+
+}

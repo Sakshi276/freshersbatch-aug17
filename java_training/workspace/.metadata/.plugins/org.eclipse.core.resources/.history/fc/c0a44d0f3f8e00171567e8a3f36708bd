@@ -1,0 +1,48 @@
+package com.spring.TestInheritence;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CAR")
+@AttributeOverrides({  
+    @AttributeOverride(name="carId", column=@Column(name="id")),  
+    @AttributeOverride(name="mileage", column=@Column(name="mileage")),  
+    @AttributeOverride(name="name", column=@Column(name="name"))  
+})
+public class Car extends Vehicle {
+	
+	@Column
+	private double capacity;
+
+	public Car() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Car(String name, double mileage,double capacity) {
+		super(name, mileage);
+		this.capacity=capacity;
+	}
+
+	public double getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(double capacity) {
+		this.capacity = capacity;
+	}
+
+	@Override
+	public String toString() {
+		return "Car [capacity=" + capacity + "]";
+	}
+
+	
+	
+	
+
+}

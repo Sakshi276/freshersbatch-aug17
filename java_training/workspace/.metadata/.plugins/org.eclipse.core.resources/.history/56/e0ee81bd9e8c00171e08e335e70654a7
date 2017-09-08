@@ -1,0 +1,28 @@
+package com.spring.SpringRestMongoDemo.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.spring.SpringRestMongoDemo.collections.UserCollection;
+import com.spring.SpringRestMongoDemo.entity.User;
+import com.spring.SpringRestMongoDemo.repository.UserRepository;
+
+public class UserMongoDaoImpl implements UserDao {
+
+	@Autowired
+	UserRepository userRepository;
+	public User createUser(User user)
+	{
+		UserCollection userCollection = new UserCollection();
+		userCollection.setFirstName(user.getFirstName());
+		userCollection.setLastName(user.getLastName());
+		userCollection.setUserName(user.getUserName());
+		userCollection.setPassword(user.getPassword());
+		userCollection.setEmail(user.getEmail());
+		userCollection.setPhone(user.getPhone());
+		
+		System.out.println("Inside DAO");
+		
+		userRepository.save(userCollection);
+		return user;
+	}
+}
